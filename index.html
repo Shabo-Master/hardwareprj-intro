@@ -380,9 +380,12 @@
 												<!-- <h3>网关实物图</h3> -->
 												<div class="row">
 													<div class="col-md-6">
-														<p>
-															hhhhhh
+														<p>该网关是基于叠锶公司的ONetSwitch20开发板设计的。ONetSwtch20整体上是两部分，母板是Xilinx公司的Zedboard开发板，扩展板是叠锶公司自己设计的，扩展了四个GE口，合计五个GE口。
 														</p>
+														<p>我们将母板上的GE口作为WAN口连接互联网，其他四个口连接内网。</p>
+														<p>系统上，初时我们使用官方提供的内核文件，文件系统使用OpenWrt的文件系统。</p>
+														<p>首次将系统搭建起来之后开启所有网口，发现无法与开发板网络通信，但是单网口没有问题。遂重新编译Linux内核，开启对802.1q的支持，重新配置Vlan后解决。</p>
+														<p>发现缺少NAT转发功能，内核未支持iptables。同样在编译Linux内核时将ipbales的支持加上。</p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/gateway.png" alt="">
@@ -419,11 +422,10 @@
 												<h4 class="modal-title" id="project-2-label">硬件逻辑图</h4>
 											</div>
 											<div class="modal-body">
-												<h3>硬件逻辑图</h3>
+												<!-- <h3>硬件逻辑图</h3> -->
 												<div class="row">
 													<div class="col-md-6">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+														<p>该图为ONetSwitch20开发板硬件连接图</p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/hw-block.png" alt="">
@@ -462,8 +464,7 @@
 												<h3>Project Description</h3>
 												<div class="row">
 													<div class="col-md-6">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+														<p>四个扩展GE口之间通过DMA连接，母板上的GE口直接通过AXI总线与ARM核连接</p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/dma.png" alt="">
@@ -503,8 +504,10 @@
 												<!-- <h3>Project Description</h3> -->
 												<div class="row">
 													<div class="col-md-6">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+														<p>转发测试时使用5线程，双向各测试10次后取平均值。</p>
+														<p>内网转发是指内网GE口直接转发，不进行NAT。NAT转发是指数据包在内外网之间转发需要在内核中进行包头地址的转换。</p>
+														<p>内网转发带宽在540Mbps左右，NAT转发330Mbps左右。可以看出NAT转发对内核性能要求会比较高。</p>
+														<p>成品的整体性能已经足够日常使用了，特别是学校的宿舍区（沁苑除外）有线入网带宽限制是100Mbps，已经足够使用。</p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/test.png" alt="">
@@ -540,11 +543,12 @@
 												<h4 class="modal-title" id="project-5-label">锐捷认证过程</h4>
 											</div>
 											<div class="modal-body">
-												<h3>Project Description</h3>
+												<!-- <h3>Project Description</h3> -->
 												<div class="row">
 													<div class="col-md-6">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+														<p>锐捷认证过程与询问握手协议（Challenge-Handshake Authentication Protocol，CHAP）类似。过程中有三个设备参与———用户、交换机、中心服务器。</p>
+														<p>认证时用户连上交换机并发起请求->交换机询问身份认证->交换机将身份信息给中心服务器->服务器回复->交换机询问用户密码->用户回复密码->交换机将密码给服务器->服务器查询后返回验证结果->交换机返回认证结果->用户认证结束</p>
+														<p>交换机在认证过程中起到控制用户网络连接状态和认证中介的作用，中心认证服务器则存储用户名、密码等信息，对认证进行集中管理。</p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/8021x.png" alt="">
@@ -580,11 +584,10 @@
 												<h4 class="modal-title" id="project-6-label">认证结果</h4>
 											</div>
 											<div class="modal-body">
-												<h3>Project Description</h3>
+												<!-- <h3>Project Description</h3> -->
 												<div class="row">
 													<div class="col-md-6">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+														<p>认证结果看出认证成功，并且认证后进行DHCP获取了IP地址。对百度也可以ping通。</p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/ruijie.png" alt="">
@@ -620,11 +623,13 @@
 												<h4 class="modal-title" id="project-7-label">远程控制</h4>
 											</div>
 											<div class="modal-body">
-												<h3>Project Description</h3>
+												<!-- <h3>Project Description</h3> -->
 												<div class="row">
 													<div class="col-md-6">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+														<p>远程控制使用的socket套接字进行通信。cs结构，开发板作为服务器端，用户控制端作为客户端。输入预设的IP地址和端口连上开发板的服务端。</p>
+														<p>客户端和服务端连上之后，客户端仅对命令进行采集，通过套接字将其发送到服务端。</p>
+														<p>服务端使用Python的subprogress模块将字符串输出到命令行进行控制。</p>
+														<p>可以将该功能进行进一步的扩展，将常用功能做成按键，将更方便使用。</p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/zynqctrl.png" alt="">
@@ -660,11 +665,12 @@
 												<h4 class="modal-title" id="project-8-label">远程信息获取</h4>
 											</div>
 											<div class="modal-body">
-												<h3>Project Description</h3>
+												<!-- <h3>Project Description</h3> -->
 												<div class="row">
 													<div class="col-md-6">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+														<p>远程控制使用的socket套接字进行通信。cs结构，开发板作为服务器端，用户控制端作为客户端。输入预设的IP地址和端口连上开发板的服务端。</p>
+														<p>开发板服务端从Linux系统获取系统信息，并将其组织成Dict结构。再将数据转换成字符串发送给客户端。</p>
+														<p>客户端收到字串流，将其转换回Dict结构，并在界面上进行输出。</p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/zynqinfo.png" alt="">
@@ -700,11 +706,13 @@
 												<h4 class="modal-title" id="project-9-label">Socket通信</h4>
 											</div>
 											<div class="modal-body">
-												<h3>Project Description</h3>
+												<!-- <h3>Project Description</h3> -->
 												<div class="row">
 													<div class="col-md-6">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-														<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+														<p>服务器首先启动，通过调用 socket()建立一个套接口，然后 bind()将该套接口和本地地址（IP 地址和端口）绑定在一起，再 listen()使得套接口做好侦听准备，并规定它的请求队列的长度，之后就调用accept()来接收连接，并获得客户 机的地址信息。</p>
+														<p>客户机在建立套接口之后就可以调用 connect()和服务器建立连接。</p>
+														<p>连接一旦建立，客户机和服务器之间就可以通过调用 send()和 recv()来发送和接收数据。</p>
+														<p>最后，待数据传送结束后，双方调用 closesocket()关闭套接口。 </p>
 													</div>
 													<div class="col-md-6">
 														<img src="images/socket.png" alt="">
